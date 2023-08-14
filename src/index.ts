@@ -1,19 +1,26 @@
-import type { Command } from "./types/command.js";
+import type { Command } from "@customTypes/command.js";
 
-import { logger } from "./lib/logger.js";
-import { register } from "./lib/register.js";
+import { logger } from "@lib/logger.js";
+import { register } from "@lib/register.js";
 
-import { Client, Events, GatewayIntentBits } from "discord.js";
+import { Client, Events, GatewayIntentBits, TextChannel } from "discord.js";
+import { Cron } from "croner";
+import dayjs from "dayjs";
 
-import releaseCommand from "./commands/release.js";
+import releaseCommand from "@commands/release.js";
+import { buildReleases } from "@lib/release.js";
 
 if (!process.env.DISCORD_TOKEN)
   throw new Error("Discord token is not defined.");
 
+if (!process.env.RELEASES_CHANNEL)
+  throw new Error("Releases channel is not defined.");
+
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
+const RELEASES_CHANNEL = process.env.RELEASES_CHANNEL;
 
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates],
+  intents: [GatewayIntentBits.Guilds],
 });
 
 // Registering commands
@@ -32,7 +39,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
     );
 
     if (!command) {
-      logger.error(`Không tìm thấy lệnh ${interaction.commandName} nyaaaaa~`);
+      logger.error(`Không tìm thấy lệnh ${interaction.commandName}`);
       return;
     }
 
@@ -65,3 +72,22 @@ logger.info("Ready.");
 
 // Start the bot
 client.login(DISCORD_TOKEN);
+
+// Schedule to run releases on every 6am
+Cron(
+  "0 */6 * * *",
+  {
+    timezone: "Asia/Ho_Chi_Minh",
+  },
+  async () => {
+    const date = dayjs.tz().startOf("day");
+    const response = await buildReleases(date);
+
+    if (!response) return;
+
+    const { embed, attachment } = response;
+
+    const channel = client.channels.cache.get(RELEASES_CHANNEL) as TextChannel;
+    if (channel) channel.send({ embeds: [embed], files: [attachment] });
+  }
+);
