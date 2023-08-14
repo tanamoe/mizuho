@@ -5,6 +5,7 @@ import {
 } from "discord.js";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc.js";
+import timezone from "dayjs/plugin/timezone.js";
 import vi from "dayjs/locale/vi.js";
 import customParseFormat from "dayjs/plugin/customParseFormat.js";
 
@@ -19,8 +20,10 @@ import { EmbedBuilder } from "@discordjs/builders";
 import { emote } from "@utils/emote.js";
 
 dayjs.extend(utc);
+dayjs.extend(timezone);
 dayjs.extend(customParseFormat);
 dayjs.locale(vi);
+dayjs.tz.setDefault("Asia/Ho_Chi_Minh");
 
 const dateFormats = ["DD-MM-YYYY", "DD/MM/YYYY", "DD.MM.YYYY"];
 
@@ -56,7 +59,7 @@ export default {
 
     const date = interaction.options.getString("date")
       ? dayjs(interaction.options.getString("date"), dateFormats).startOf("day")
-      : dayjs.utc().startOf("day");
+      : dayjs.tz().startOf("day");
 
     const data = await pb.collection(Collections.BookDetailed).getFullList<
       BookDetailedResponse<{
