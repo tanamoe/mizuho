@@ -12,6 +12,7 @@
     "paths": {
       "@lib/*": ["./lib/*"],
       "@utils/*": ["./utils/*"],
+      "@commands/*": ["./commands/*"],
       "@customTypes/*": ["./types/*"]
     }
   }
