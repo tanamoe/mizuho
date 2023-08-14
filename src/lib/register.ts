@@ -2,10 +2,7 @@ import type { Command } from "../types/command.js";
 
 import { logger } from "../lib/logger.js";
 
-import * as dotenv from "dotenv";
 import { REST, Routes } from "discord.js";
-
-dotenv.config();
 
 export async function register(commands: Command[]) {
   if (!process.env.DISCORD_TOKEN || !process.env.DISCORD_CLIENT_ID)

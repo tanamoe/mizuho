@@ -3,12 +3,9 @@ import type { Command } from "./types/command.js";
 import { logger } from "./lib/logger.js";
 import { register } from "./lib/register.js";
 
-import * as dotenv from "dotenv";
 import { Client, Events, GatewayIntentBits } from "discord.js";
 
 import releaseCommand from "./commands/release.js";
-
-dotenv.config();
 
 if (!process.env.DISCORD_TOKEN)
   throw new Error("Discord token is not defined.");
