@@ -6,9 +6,19 @@ import { register } from "@lib/register.js";
 import { Client, Events, GatewayIntentBits, TextChannel } from "discord.js";
 import { Cron } from "croner";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc.js";
+import timezone from "dayjs/plugin/timezone.js";
+import vi from "dayjs/locale/vi.js";
+import customParseFormat from "dayjs/plugin/customParseFormat.js";
 
 import releaseCommand from "@commands/release.js";
 import { buildReleases } from "@lib/release.js";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(customParseFormat);
+dayjs.locale(vi);
+dayjs.tz.setDefault("Asia/Ho_Chi_Minh");
 
 if (!process.env.DISCORD_TOKEN)
   throw new Error("Discord token is not defined.");
