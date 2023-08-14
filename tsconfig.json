@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "NodeNext",
+    "rootDir": "./src",
+    "outDir": "./build",
+    "baseUrl": "./src",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@lib/*": ["./lib/*"],
+      "@utils/*": ["./utils/*"],
+      "@customTypes/*": ["./types/*"]
+    }
+  }
+}
