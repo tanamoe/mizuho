@@ -104,9 +104,10 @@ export default {
       })
       .setTitle("Lịch phát hành")
       .setDescription(
-        Intl.DateTimeFormat("vi-VN", { dateStyle: "full" }).format(
-          date.toDate()
-        )
+        Intl.DateTimeFormat("vi-VN", {
+          dateStyle: "full",
+          timeZone: "Asia/Ho_Chi_Minh",
+        }).format(date.toDate())
       )
       .setURL("https://tana.moe/calendar");
 
