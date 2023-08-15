@@ -85,7 +85,7 @@ client.login(DISCORD_TOKEN);
 
 // Schedule to run releases on every 6am
 Cron(
-  "0 */6 * * *",
+  "0 6 * * *",
   {
     timezone: "Asia/Ho_Chi_Minh",
   },
