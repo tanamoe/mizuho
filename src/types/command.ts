@@ -12,6 +12,6 @@ export interface Command {
     | Omit<SlashCommandBuilder, "addSubcommandGroup" | "addSubcommand">
     | ContextMenuCommandBuilder;
   execute(
-    interaction: BaseInteraction
+    interaction: BaseInteraction,
   ): Promise<void | Message | InteractionResponse>;
 }

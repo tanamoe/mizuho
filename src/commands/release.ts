@@ -14,7 +14,7 @@ export default {
     .setName("releases")
     .setDescription("Xem lịch phát hành")
     .addStringOption((option) =>
-      option.setName("date").setDescription("Ngày/tháng/năm")
+      option.setName("date").setDescription("Ngày/tháng/năm"),
     ),
   async execute(interaction: ChatInputCommandInteraction) {
     await interaction.deferReply({ ephemeral: true });
