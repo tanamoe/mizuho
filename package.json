@@ -25,7 +25,7 @@
     "discord-api-types": "^0.37.51",
     "discord.js": "^14.12.1",
     "pino": "^8.14.2",
-    "pocketbase": "^0.16.0"
+    "pocketbase": "^0.18.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",
