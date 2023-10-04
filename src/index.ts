@@ -45,7 +45,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
     interaction.isMessageContextMenuCommand()
   ) {
     const command = commands.find(
-      (command) => command.data.name === interaction.commandName
+      (command) => command.data.name === interaction.commandName,
     );
 
     if (!command) {
@@ -62,7 +62,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
   if (interaction.isButton()) {
     const action = commands.find(
-      (action) => action.data.name === interaction.customId
+      (action) => action.data.name === interaction.customId,
     );
 
     if (!action) {
@@ -99,5 +99,5 @@ Cron(
 
     const channel = client.channels.cache.get(RELEASES_CHANNEL) as TextChannel;
     if (channel) channel.send({ embeds: [embed], files: [attachment] });
-  }
+  },
 );

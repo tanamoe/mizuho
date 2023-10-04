@@ -31,7 +31,7 @@ export async function getReleases(date: Dayjs) {
     expand: "publisher",
     sort: "+publishDate,+name,-edition",
     filter: `publishDate >= '${date.format(
-      "YYYY-MM-DD"
+      "YYYY-MM-DD",
     )}' && publishDate < '${date.add(1, "day").format("YYYY-MM-DD")}'`,
   });
 
@@ -47,7 +47,7 @@ export async function getReleases(date: Dayjs) {
         ...release,
         volume: parseVolume(release.volume),
       })),
-      (p) => p.publisher
+      (p) => p.publisher,
     ),
     totalPrice: data.reduce((prev, curr) => prev + curr.price, 0),
   };
@@ -63,7 +63,7 @@ export async function buildReleases(date: Dayjs) {
     `https://og.tana.moe/calendar/today?date=${date.format("YYYY-MM-DD")}`,
     {
       name: "releases.png",
-    }
+    },
   );
 
   const embed = new EmbedBuilder()
@@ -78,13 +78,13 @@ export async function buildReleases(date: Dayjs) {
       Intl.DateTimeFormat("vi-VN", {
         dateStyle: "full",
         timeZone: "Asia/Ho_Chi_Minh",
-      }).format(date.toDate())
+      }).format(date.toDate()),
     )
     .setURL("https://tana.moe/calendar");
 
   for (const publisher in data) {
     const emoji = emote.find(
-      (e) => e.id === data[publisher][0].expand?.publisher.slug
+      (e) => e.id === data[publisher][0].expand?.publisher.slug,
     )?.value;
 
     embed.addFields({

@@ -16,7 +16,7 @@ export async function register(commands: Command[]) {
 
   try {
     logger.info(
-      `Started refreshing ${commands.length} application (/) commands.`
+      `Started refreshing ${commands.length} application (/) commands.`,
     );
 
     // The put method is used to fully refresh all commands in the guild with the current set
