@@ -1,6 +1,5 @@
 {
   "name": "mizuho",
-  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,18 +21,18 @@
     "@discordjs/builders": "^1.6.5",
     "croner": "^7.0.2",
     "dayjs": "^1.11.10",
-    "discord-api-types": "^0.37.59",
+    "discord-api-types": "^0.37.60",
     "discord.js": "^14.13.0",
-    "pino": "^8.15.4",
-    "pocketbase": "^0.18.0"
+    "pino": "^8.16.0",
+    "pocketbase": "^0.18.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.7.2",
-    "@commitlint/config-conventional": "^17.7.0",
-    "@types/node": "^20.8.2",
-    "@typescript-eslint/eslint-plugin": "^6.7.4",
-    "@typescript-eslint/parser": "^6.7.4",
-    "eslint": "^8.50.0",
+    "@commitlint/cli": "^17.8.0",
+    "@commitlint/config-conventional": "^17.8.0",
+    "@types/node": "^20.8.6",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "@typescript-eslint/parser": "^6.7.5",
+    "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
