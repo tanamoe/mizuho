@@ -1,7 +1,7 @@
 import {
-  BookDetailedResponse,
+  BooksDetailsResponse,
   Collections,
-  PublisherResponse,
+  PublishersResponse,
 } from "@customTypes/pb.js";
 import { EmbedBuilder } from "@discordjs/builders";
 import pb from "@lib/pb.js";
@@ -23,9 +23,9 @@ export function parseVolume(volume: number) {
 }
 
 export async function getReleases(date: Dayjs) {
-  const data = await pb.collection(Collections.BookDetailed).getFullList<
-    BookDetailedResponse<{
-      publisher: PublisherResponse;
+  const data = await pb.collection(Collections.BooksDetails).getFullList<
+    BooksDetailsResponse<{
+      publisher: PublishersResponse;
     }>
   >({
     expand: "publisher",
@@ -39,8 +39,8 @@ export async function getReleases(date: Dayjs) {
 
   return {
     data: groupBy<
-      BookDetailedResponse<{
-        publisher: PublisherResponse;
+      BooksDetailsResponse<{
+        publisher: PublishersResponse;
       }>
     >(
       data.map((release) => ({
