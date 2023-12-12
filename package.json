@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@discordjs/builders": "^1.6.5",
-    "croner": "^7.0.2",
+    "croner": "^8.0.0",
     "dayjs": "^1.11.10",
     "discord-api-types": "^0.37.60",
     "discord.js": "^14.13.0",
